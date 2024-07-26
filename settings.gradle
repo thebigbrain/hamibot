@@ -1,1 +1,32 @@
-include ':app', ':automator', ':common', ':autojs', ':inrt'
+pluginManagement {                                          
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+    }
+  resolutionStrategy {
+    eachPlugin {
+      if (requested.id.id == "com.android.application") {
+        useModule("com.android.tools.build:gradle:${requested.version}")
+      }
+    }
+  }
+}
+
+rootProject.name = "appbot"
+
+// include ':app', ':automator', ':common', ':autojs', ':inrt'
+
+dependencyResolutionManagement {                            
+    repositories {
+        mavenCentral()
+    }
+}
+
+include("app")
+include("automator")
+include("common")
+include("autojs")
+include("inrt")
+
+println "构建配置中..."

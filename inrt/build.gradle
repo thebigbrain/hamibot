@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion versions.compile
@@ -14,11 +14,6 @@ android {
         versionName versions.appVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-    }
-    lintOptions {
-        abortOnError false
-        disable 'MissingTranslation'
-        disable 'ExtraTranslation'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -54,6 +49,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    lint {
+        abortOnError false
+        disable 'MissingTranslation', 'ExtraTranslation'
     }
 }
 
